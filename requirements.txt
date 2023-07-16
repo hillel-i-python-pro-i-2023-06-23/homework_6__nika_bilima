@@ -2,6 +2,8 @@ faker==19.1.0
 
 requests == 2.31.0
 
+pandas == 2.0.3
+
 pre-commit == 3.3.3
 
 pyupgrade == 3.9.0
