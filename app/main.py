@@ -1,6 +1,7 @@
 from app.services.reading_the_file import reading_the_file
 from app.services.generate_users import generate_users, print_users
 from app.services.who_is_there import get_astronaut_count, print_count
+from app.services.average import calculate_average, print_average
 
 
 def main():
@@ -16,3 +17,5 @@ def main():
     print_count(count)
 
     print("\n\nMini-task 4:'Average'")
+    average_h, average_w = calculate_average()
+    print_average(average_h, average_w)
