@@ -18,8 +18,3 @@ def print_count(count):
     if count is not None:
         print(f"Number of astronauts: {count}.")
         print("They are currently on board the ISS.")
-
-
-
-
-

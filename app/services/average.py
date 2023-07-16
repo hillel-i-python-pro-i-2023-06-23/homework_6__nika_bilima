@@ -2,7 +2,8 @@ import pandas as pd
 
 
 def calculate_average():
-    url = "https://drive.google.com/uc?export=download&id=13nk_FYpcayUck2Ctrela5Tjt9JQbjznt"
+    url = "https://drive.google.com/uc?export=download&" \
+          "id=13nk_FYpcayUck2Ctrela5Tjt9JQbjznt"
 
     data = pd.read_csv(url)
 
@@ -18,4 +19,3 @@ def calculate_average():
 def print_average(height, weight):
     print(f"Average height: {height} cm")
     print(f"Average weight: {weight} kg")
-

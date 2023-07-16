@@ -1,7 +1,7 @@
 from faker import Faker
 
 
-def generate_users(num_of_users = 100):
+def generate_users(num_of_users=100):
     fake = Faker()
     for _ in range(num_of_users):
         name = fake.first_name()
