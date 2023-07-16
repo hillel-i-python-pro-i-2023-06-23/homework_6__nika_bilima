@@ -3,4 +3,4 @@ version: '3.9'
 services:
   app:
     volumes:
-      - ./files_input:/wd/filed_input:ro
+      - ./files_input:/wd/files_input:ro
