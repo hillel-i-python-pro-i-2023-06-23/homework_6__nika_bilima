@@ -1,4 +1,4 @@
-from app.services.reading_the_file import reading_the_file
+from app.services.reading_the_file import reading_the_file, print_the_file
 from app.services.generate_users import generate_users, print_users
 from app.services.who_is_there import get_astronaut_count, print_count
 from app.services.average import calculate_average, print_average
@@ -6,7 +6,8 @@ from app.services.average import calculate_average, print_average
 
 def main():
     print("Mini-task 1:'Reading the file'")
-    reading_the_file()
+    file = reading_the_file()
+    print_the_file(file)
 
     print("\n\nMini-task 2:'Generate_users'")
     users = generate_users(50)
