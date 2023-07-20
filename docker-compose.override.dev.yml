@@ -4,3 +4,6 @@ services:
   app:
     volumes:
       - ./files_input:/wd/files_input:ro
+    command: python app.py
+    ports:
+      - "5000:5000"

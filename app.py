@@ -4,7 +4,6 @@ from app.services.average import calculate_average
 from flask import Flask
 from app.services.reading_the_file import reading_the_file
 
-
 app = Flask(__name__)
 
 
@@ -31,14 +30,14 @@ def get_users(num_of_users=100):
 @app.route("/space/")
 def astronauts():
     count = get_astronaut_count()
-    return f"There are currently {count} astronauts on the ISS."
+    return f"There are currently <b>{count}</b> astronauts on the ISS."
 
 
 @app.route("/mean/")
 def average():
     height, weight = calculate_average()
-    return f"Average height: {height} cm<br>Average weight: {weight} kg"
+    return f"Average height: <b>{height}</b> cm<br>Average weight: <b>{weight}</b> kg"
 
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(debug=True, host="0.0.0.0")
