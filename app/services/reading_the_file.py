@@ -1,4 +1,4 @@
-from application.config import FILES_INPUT_DIR
+from app.config import FILES_INPUT_DIR
 
 
 def reading_the_file():
