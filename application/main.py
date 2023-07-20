@@ -1,7 +1,7 @@
-from app.services.reading_the_file import reading_the_file
-from app.services.generate_users import generate_users, print_users
-from app.services.who_is_there import get_astronaut_count, print_count
-from app.services.average import calculate_average, print_average
+from application.services.reading_the_file import reading_the_file
+from application.services.generate_users import generate_users, print_users
+from application.services.who_is_there import get_astronaut_count, print_count
+from application.services.average import calculate_average, print_average
 
 
 def main():

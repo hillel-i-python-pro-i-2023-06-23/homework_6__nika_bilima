@@ -1,7 +1,7 @@
 # Ignore all
-app
+application
 
 # Exclude
-!app
+!application
 !run.py
 !requirements.txt
