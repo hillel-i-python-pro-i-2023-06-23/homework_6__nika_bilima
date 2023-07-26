@@ -1,8 +1,16 @@
+from flask import Flask
+
+# from webargs import fields
+# from webargs.flaskparser import use_args
+
 from app.services.generate_users import generate_users
 from app.services.who_is_there import get_astronaut_count
 from app.services.average import calculate_average
-from flask import Flask
 from app.services.reading_the_file import reading_the_file
+
+from app.services.create_table import create_table
+
+# from app.services.db_connection import DBConnection
 
 app = Flask(__name__)
 
@@ -38,6 +46,8 @@ def average():
     height, weight = calculate_average()
     return f"Average height: <b>{height}</b> cm<br>Average weight: <b>{weight}</b> kg"
 
+
+create_table()
 
 if __name__ == "__main__":
     app.run(debug=True, host="0.0.0.0")
