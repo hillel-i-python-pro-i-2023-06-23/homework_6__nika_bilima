@@ -60,6 +60,27 @@ def users_create(args):
         return "Successfully"
 
 
+@app.route("/users/read-all")
+def users_read_all():
+    with DBConnection() as connection:
+        users = connection.execute("SELECT * FROM users;").fetchall()
+
+    return "<br>".join([f'{user["pk"]}    <b>{user["contact_name"]}</b>: {user["phone_value"]}' for user in users])
+
+
+@app.route("/users/read/<int:pk>")
+def users_read(pk: int):
+    with DBConnection() as connection:
+        user = connection.execute(
+            "SELECT * " "FROM users " "WHERE (pk=:pk);",
+            {
+                "pk": pk,
+            },
+        ).fetchone()
+
+    return f"{user['pk']}:    <b>{user['contact_name']}</b>: {user['phone_value']}"
+
+
 create_table()
 
 if __name__ == "__main__":
