@@ -1,7 +1,7 @@
 from flask import Flask
 
-# from webargs import fields
-# from webargs.flaskparser import use_args
+from webargs import fields
+from webargs.flaskparser import use_args
 
 from app.services.generate_users import generate_users
 from app.services.who_is_there import get_astronaut_count
@@ -10,7 +10,7 @@ from app.services.reading_the_file import reading_the_file
 
 from app.services.create_table import create_table
 
-# from app.services.db_connection import DBConnection
+from app.services.db_connection import DBConnection
 
 app = Flask(__name__)
 
@@ -45,6 +45,19 @@ def astronauts():
 def average():
     height, weight = calculate_average()
     return f"Average height: <b>{height}</b> cm<br>Average weight: <b>{weight}</b> kg"
+
+
+@app.route("/users/create")
+@use_args({"name": fields.Str(required=True), "phone": fields.Str(required=True)}, location="query")
+def users_create(args):
+    with DBConnection() as connection:
+        with connection:
+            connection.execute(
+                "INSERT INTO users (contact_name, phone_value) VALUES (:name, :phone);",
+                {"name": args["name"], "phone": args["phone"]},
+            )
+
+        return "Successfully"
 
 
 create_table()
