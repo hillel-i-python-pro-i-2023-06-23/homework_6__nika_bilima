@@ -117,6 +117,19 @@ def users_update(
     return "Successfully"
 
 
+@app.route("/users/delete/<int:pk>")
+def users_delete(pk):
+    with DBConnection() as connection:
+        with connection:
+            connection.execute(
+                "DELETE " "FROM users " "WHERE (pk=:pk);",
+                {
+                    "pk": pk,
+                },
+            )
+    return "Successfully"
+
+
 create_table()
 
 if __name__ == "__main__":
