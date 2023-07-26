@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, Response
 
 from webargs import fields
 from webargs.flaskparser import use_args
@@ -79,6 +79,42 @@ def users_read(pk: int):
         ).fetchone()
 
     return f"{user['pk']}:    <b>{user['contact_name']}</b>: {user['phone_value']}"
+
+
+@app.route("/users/update/<int:pk>")
+@use_args({"name": fields.Str(), "phone": fields.Str()}, location="query")
+def users_update(
+    args,
+    pk: int,
+):
+    with DBConnection() as connection:
+        with connection:
+            name = args.get("name")
+            phone = args.get("phone")
+
+            if name is None and phone is None:
+                return Response(
+                    "Need to provide at least one argument",
+                    status=404,
+                )
+
+            args_for_request = []
+            if name is not None:
+                args_for_request.append("contact_name=:name")
+            if phone is not None:
+                args_for_request.append("phone_value=:phone")
+
+            args_2 = ", ".join(args_for_request)
+
+            connection.execute(
+                "UPDATE users " f"SET {args_2} " "WHERE pk=:pk;",
+                {
+                    "pk": pk,
+                    "name": name,
+                    "phone": phone,
+                },
+            )
+    return "Successfully"
 
 
 create_table()
