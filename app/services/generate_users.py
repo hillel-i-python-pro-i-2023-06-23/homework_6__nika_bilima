@@ -7,7 +7,7 @@ def generate_users(num_of_users=100):
         name = fake.first_name()
         email = fake.email()
 
-        yield f"№{_+1}: {name}    {email}"
+        yield f"№{_+1}: <b>{name}</b>    {email}"
 
 
 def print_users(generated_users):

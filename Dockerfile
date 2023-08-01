@@ -23,9 +23,10 @@ COPY --chown=${USER} requirements.txt requirements.txt
 RUN pip install --upgrade pip && \
     pip install --requirement requirements.txt
 
-COPY --chown=${USER} run.py run.py
-COPY --chown=${USER} app app
+COPY --chown=${USER} /run.py run.py
+COPY --chown=${USER} /app app
+COPY --chown=${USER} /app.py app.py
 
 USER ${USER}
 
-ENTRYPOINT ["python", "run.py"]
+CMD ["python", "app.py"]
