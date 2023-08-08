@@ -2,8 +2,11 @@ version: '3.9'
 
 services:
   app:
+    user: "1000:1000"
+    userns_mode: "host"
     volumes:
       - ./files_input:/wd/files_input:ro
+      - ./db:/wd/db:rw
     command: python app.py
     ports:
       - "5000:5000"
